@@ -176,14 +176,23 @@ These instructions will help you set up and run the application locally.
 - `PUT /api/tickets/:id` - Update a ticket
 - `DELETE /api/tickets/:id` - Delete a ticket
 
-## Links/Screenshot
+## Screenshots
 
-- **Deployed Application**: [Add the deployed app link here]
-- **GitHub Repository**: [Add the GitHub repository link here]
-- **Screenshot**:  
-   ![Screenshot of the Kanban Board Application](path/to/screenshot.png)
-   
-Replace `path/to/screenshot.png` with the actual path or URL to the screenshot.
+- **Deployed Application**: [Kanban Board App](https://kanban-board-nshx.onrender.com)
+- **GitHub Repository**: [jmont2307/kanban-board](https://github.com/jmont2307/kanban-board)
+
+### Login Screen
+![Login Screen](/screenshots/login-screen.png)
+
+### Kanban Board Overview
+![Kanban Board](/screenshots/kanban-board.png)
+
+### Task Creation
+![Task Creation](/screenshots/task-creation.png)
+
+*Note: To access the application, use the following credentials:*
+- Username: `JollyGuru`
+- Password: `password`
 
 ## Credits
 
