@@ -4,17 +4,18 @@ dotenv.config();
 import { Sequelize } from 'sequelize';
 import { UserFactory } from './user.js';
 import { TicketFactory } from './ticket.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const sequelize = process.env.DB_URL
-  ? new Sequelize(process.env.DB_URL)
-  : new Sequelize(process.env.DB_NAME || 'kanban_db', process.env.DB_USERNAME || '', process.env.DB_PASSWORD || '', {
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432'),
-      dialect: 'postgres',
-      dialectOptions: {
-        decimalNumbers: true,
-      },
-    });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DB_PATH = path.join(__dirname, '../../database.sqlite');
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: DB_PATH,
+  logging: false
+});
 
 const User = UserFactory(sequelize);
 const Ticket = TicketFactory(sequelize);
