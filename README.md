@@ -176,6 +176,15 @@ These instructions will help you set up and run the application locally.
 - `PUT /api/tickets/:id` - Update a ticket
 - `DELETE /api/tickets/:id` - Delete a ticket
 
+## Links/Screenshot
+
+- **Deployed Application**: [Add the deployed app link here]
+- **GitHub Repository**: [Add the GitHub repository link here]
+- **Screenshot**:  
+   ![Screenshot of the Kanban Board Application](path/to/screenshot.png)
+   
+Replace `path/to/screenshot.png` with the actual path or URL to the screenshot.
+
 ## Credits
 
 This project was created with assistance from:
