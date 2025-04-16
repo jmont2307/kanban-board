@@ -181,18 +181,22 @@ These instructions will help you set up and run the application locally.
 - **Deployed Application**: [Kanban Board App](https://kanban-board-nshx.onrender.com)
 - **GitHub Repository**: [jmont2307/kanban-board](https://github.com/jmont2307/kanban-board)
 
-### Login Screen
-![Login Screen](/screenshots/login-screen.png)
-
-### Kanban Board Overview
-![Kanban Board](/screenshots/kanban-board.png)
-
-### Task Creation
-![Task Creation](/screenshots/task-creation.png)
-
 *Note: To access the application, use the following credentials:*
 - Username: `JollyGuru`
 - Password: `password`
+
+### Application Screenshots
+
+<div align="center">
+  <p><strong>Login Screen</strong></p>
+  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/login-screen.png" alt="Login Screen" width="800">
+  
+  <p><strong>Kanban Board Overview</strong></p>
+  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/kanban-board.png" alt="Kanban Board Overview" width="800">
+  
+  <p><strong>Task Creation</strong></p>
+  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/task-creation.png" alt="Task Creation" width="800">
+</div>
 
 ## Credits
 
