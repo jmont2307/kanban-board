@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // CORS handling for development and production
-app.use((req, res, next) => {
+app.use((req, res, next): void => {
   // Allow specific origins or all in development
   const allowedOrigins = process.env.NODE_ENV === 'production' 
     ? [process.env.CLIENT_URL || ''] 
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(routes);
 
 // For any other request, serve the React app
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
 

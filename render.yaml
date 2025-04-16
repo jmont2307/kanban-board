@@ -3,19 +3,17 @@ services:
   - type: pserv
     name: kanban-db
     plan: free
-    region: ohio  # Choose your region
+    region: ohio
     env: postgres
     user: kanban_user
-    ipAllowList: []  # Only allow internal connections
+    ipAllowList: []
     database: kanban_db
 
-  # Backend API Service
+  # Combined Server and Client Service
   - type: web
-    name: kanban-server
+    name: kanban-app
     plan: free
-    region: ohio  # Choose your region
-    runtime: node
-    rootDir: server
+    region: ohio
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
@@ -25,30 +23,11 @@ services:
           name: kanban-db
           property: connectionString
       - key: JWT_SECRET
-        generateValue: true  # Generates a random value
+        generateValue: true
       - key: NODE_ENV
         value: production
-      - key: CLIENT_URL
-        fromService:
-          type: web
-          name: kanban-client
-          property: url
-
-  # Frontend Static Site
-  - type: web
-    name: kanban-client
-    plan: free
-    region: ohio  # Choose your region
-    runtime: static
-    rootDir: client
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: kanban-server
-          property: url
+      - key: PORT
+        value: 10000
 
 # Seed the database after deployment
 databases:
