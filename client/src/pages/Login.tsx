@@ -8,6 +8,7 @@ const Login = () => {
     username: '',
     password: ''
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -15,15 +16,28 @@ const Login = () => {
       ...loginData,
       [name]: value
     });
+    
+    // Clear error message when user starts typing
+    if (errorMessage) {
+      setErrorMessage('');
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    // Validate form fields
+    if (!loginData.username || !loginData.password) {
+      setErrorMessage('Username and password are required');
+      return;
+    }
+    
     try {
       const data = await login(loginData);
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
+      setErrorMessage('Invalid username or password');
     }
   };
 
@@ -31,24 +45,28 @@ const Login = () => {
     <div className='container'>
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <label >Username</label>
+        {errorMessage && (
+          <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>
+            {errorMessage}
+          </div>
+        )}
+        <label>Username</label>
         <input 
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
         />
-      <label>Password</label>
+        <label>Password</label>
         <input 
           type='password'
           name='password'
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <button type='submit'>Submit Form</button>
+        <button type='submit'>Login</button>
       </form>
     </div>
-    
   )
 };
 

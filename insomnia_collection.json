@@ -1,0 +1,276 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-04-15T22:40:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_auth_login",
+      "parentId": "fld_auth",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/auth/login",
+      "name": "Login",
+      "description": "Authenticate user and get JWT token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"admin\",\n\t\"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1618507200000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_kanban",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Authentication",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1618507200000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_kanban",
+      "parentId": null,
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Kanban Board API",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_get_all_tickets",
+      "parentId": "fld_tickets",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/api/tickets",
+      "name": "Get All Tickets",
+      "description": "Retrieve all tickets",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1618507200000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_tickets",
+      "parentId": "wrk_kanban",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Tickets",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1618507100000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_get_ticket_by_id",
+      "parentId": "fld_tickets",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/api/tickets/1",
+      "name": "Get Ticket by ID",
+      "description": "Retrieve a specific ticket by ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1618507190000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_ticket",
+      "parentId": "fld_tickets",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/api/tickets",
+      "name": "Create Ticket",
+      "description": "Create a new ticket",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"New Task\",\n\t\"description\": \"This is a new task description\",\n\t\"status\": \"Todo\",\n\t\"dueDate\": \"2024-05-01\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1618507180000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_ticket",
+      "parentId": "fld_tickets",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/api/tickets/1",
+      "name": "Update Ticket",
+      "description": "Update an existing ticket",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Updated Task\",\n\t\"description\": \"This task has been updated\",\n\t\"status\": \"In Progress\",\n\t\"dueDate\": \"2024-05-15\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1618507170000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_ticket",
+      "parentId": "fld_tickets",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "url": "{{ _.baseUrl }}/api/tickets/1",
+      "name": "Delete Ticket",
+      "description": "Delete a ticket",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1618507160000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_kanban",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:3001"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1618507200000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_development",
+      "parentId": "env_base",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Development",
+      "data": {
+        "baseUrl": "http://localhost:3001"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl"
+        ]
+      },
+      "color": "#7d69cb",
+      "isPrivate": false,
+      "metaSortKey": 1618507200000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "env_base",
+      "modified": 1618507200000,
+      "created": 1618507200000,
+      "name": "Production",
+      "data": {
+        "baseUrl": "https://your-production-url.render.com"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl"
+        ]
+      },
+      "color": "#00c853",
+      "isPrivate": false,
+      "metaSortKey": 1618507300000,
+      "_type": "environment"
+    }
+  ]
+}
