@@ -186,17 +186,14 @@ These instructions will help you set up and run the application locally.
 - Password: `password`
 
 ### Application Screenshots
+<p><strong>Login Screen</strong></p>
+<img src="screenshots/Screenshot 2025-04-15 at 11.57.04 PM.png" alt="Login Screen" width="800">
 
-<div align="center">
-  <p><strong>Login Screen</strong></p>
-  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/login-screen.png" alt="Login Screen" width="800">
-  
-  <p><strong>Kanban Board Overview</strong></p>
-  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/kanban-board.png" alt="Kanban Board Overview" width="800">
-  
-  <p><strong>Task Creation</strong></p>
-  <img src="https://raw.githubusercontent.com/jmont2307/kanban-board/main/screenshots/task-creation.png" alt="Task Creation" width="800">
-</div>
+<p><strong>Kanban Board Overview</strong></p>
+<img src="screenshots/Screenshot 2025-04-15 at 11.57.16 PM.png" alt="Kanban Board Overview" width="800">
+
+<p><strong>Ticket Creation</strong></p>
+<img src="screenshots/Screenshot 2025-04-15 at 11.57.26 PM.png" alt="Task Creation" width="800">
 
 ## Credits
 
