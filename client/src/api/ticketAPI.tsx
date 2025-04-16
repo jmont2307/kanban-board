@@ -1,11 +1,21 @@
 import { TicketData } from '../interfaces/TicketData';
 import { ApiMessage } from '../interfaces/ApiMessage';
 import Auth from '../utils/auth';
+import { buildApiUrl } from '../utils/api';
+
+// Helper function to handle unauthorized responses
+const handleUnauthorized = (response: Response) => {
+  if (response.status === 401 || response.status === 403) {
+    console.log('Authentication error, logging out');
+    Auth.logout();
+  }
+  return response;
+};
 
 const retrieveTickets = async () => {
   try {
     const response = await fetch(
-      '/api/tickets/',
+      buildApiUrl('/api/tickets/'),
       {
         headers: {
           'Content-Type': 'application/json',
@@ -13,6 +23,10 @@ const retrieveTickets = async () => {
         }
       }
     );
+    
+    // Handle unauthorized/forbidden responses
+    handleUnauthorized(response);
+    
     const data = await response.json();
 
     if(!response.ok) {
@@ -29,7 +43,7 @@ const retrieveTickets = async () => {
 const retrieveTicket = async (id: number | null): Promise<TicketData> => {
   try {
     const response = await fetch(
-      `/api/tickets/${id}`,
+      buildApiUrl(`/api/tickets/${id}`),
       {
         headers: {
           'Content-Type': 'application/json',
@@ -37,6 +51,9 @@ const retrieveTicket = async (id: number | null): Promise<TicketData> => {
         }
       }
     );
+    
+    // Handle unauthorized/forbidden responses
+    handleUnauthorized(response);
 
     const data = await response.json();
 
@@ -53,7 +70,7 @@ const retrieveTicket = async (id: number | null): Promise<TicketData> => {
 const createTicket = async (body: TicketData) => {
   try {
     const response = await fetch(
-      '/api/tickets/', {
+      buildApiUrl('/api/tickets/'), {
         method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -61,8 +78,11 @@ const createTicket = async (body: TicketData) => {
           },
         body: JSON.stringify(body)
       }
-
-    )
+    );
+    
+    // Handle unauthorized/forbidden responses
+    handleUnauthorized(response);
+    
     const data = response.json();
 
     if(!response.ok) {
@@ -80,7 +100,7 @@ const createTicket = async (body: TicketData) => {
 const updateTicket = async (ticketId: number, body: TicketData): Promise<TicketData> => {
   try {
     const response = await fetch(
-      `/api/tickets/${ticketId}`, {
+      buildApiUrl(`/api/tickets/${ticketId}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +108,11 @@ const updateTicket = async (ticketId: number, body: TicketData): Promise<TicketD
         },
         body: JSON.stringify(body)
       }
-    )
+    );
+    
+    // Handle unauthorized/forbidden responses
+    handleUnauthorized(response);
+    
     const data = await response.json();
 
     if(!response.ok) {
@@ -105,14 +129,18 @@ const updateTicket = async (ticketId: number, body: TicketData): Promise<TicketD
 const deleteTicket = async (ticketId: number): Promise<ApiMessage> => {
   try {
     const response = await fetch(
-      `/api/tickets/${ticketId}`, {
+      buildApiUrl(`/api/tickets/${ticketId}`), {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${Auth.getToken()}`
         }
       }
-    )
+    );
+    
+    // Handle unauthorized/forbidden responses
+    handleUnauthorized(response);
+    
     const data = await response.json();
 
     if(!response.ok) {

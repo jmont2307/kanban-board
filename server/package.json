@@ -9,7 +9,9 @@
     "start": "npm run build && node dist/server.js --ignore client",
     "dev": "npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node dist/seeds/index.js"
+    "db:init": "npx tsc && node dist/db/init-db.js",
+    "db:seed": "npx tsc && node dist/seeds/index.js",
+    "seed": "npm run db:seed"
   },
   "nodemonConfig": {
     "watch": ["src"],

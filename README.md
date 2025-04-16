@@ -102,13 +102,10 @@ A full-stack Kanban board application with JWT-based authentication for managing
 
 ## Deployment
 
-This application is configured for deployment on Render.com:
+This application is configured for deployment on Render.com using two methods:
 
-1. Create a PostgreSQL database service on Render
-2. Create a Web Service for the server
-3. Set the environment variables in the Render dashboard
-4. Create a Static Site for the client
-5. Configure the client's API endpoint to point to the server URL
+1. **Quick Deployment**: Use the automated [Blueprint Deployment Guide](./DEPLOY-RENDER.md) with the included `render.yaml` configuration.
+2. **Manual Deployment**: Follow the more detailed [Step-by-Step Deployment Guide](./DEPLOYMENT.md) for complete control over the deployment process.
 
 ## API Endpoints
 
