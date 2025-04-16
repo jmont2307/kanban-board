@@ -42,30 +42,41 @@ const Login = () => {
   };
 
   return (
-    <div className='container'>
-      <form className='form' onSubmit={handleSubmit}>
-        <h1>Login</h1>
+    <div className='login-container'>
+      <div className="login-card">
+        <h1>Kanban Board Login</h1>
         {errorMessage && (
-          <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>
+          <div className="error-message">
             {errorMessage}
           </div>
         )}
-        <label>Username</label>
-        <input 
-          type='text'
-          name='username'
-          value={loginData.username || ''}
-          onChange={handleChange}
-        />
-        <label>Password</label>
-        <input 
-          type='password'
-          name='password'
-          value={loginData.password || ''}
-          onChange={handleChange}
-        />
-        <button type='submit'>Login</button>
-      </form>
+        <form className='login-form' onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Username</label>
+            <input 
+              type='text'
+              name='username'
+              placeholder="Enter your username"
+              value={loginData.username || ''}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input 
+              type='password'
+              name='password'
+              placeholder="Enter your password"
+              value={loginData.password || ''}
+              onChange={handleChange}
+            />
+          </div>
+          <button type='submit' className="login-button">Login</button>
+          <div className="login-help">
+            <p>Use username: <strong>JollyGuru</strong> and password: <strong>password</strong></p>
+          </div>
+        </form>
+      </div>
     </div>
   )
 };

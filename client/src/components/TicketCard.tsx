@@ -26,10 +26,14 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
   return (
     <div className='ticket-card'>
       <h3>{ticket.name}</h3>
-      <p>{ticket.description}</p>
-      <p>{ticket.assignedUser?.username}</p>
-      <Link to='/edit' state={{id: ticket.id}} type='button' className='editBtn'>Edit</Link>
-      <button type='button' value={String(ticket.id)} onClick={handleDelete} className='deleteBtn'>Delete</button>
+      <p className="ticket-description">{ticket.description}</p>
+      {ticket.assignedUser?.username && (
+        <p className="ticket-assignee">Assigned to: {ticket.assignedUser.username}</p>
+      )}
+      <div className="ticket-actions">
+        <Link to='/edit' state={{id: ticket.id}} className='editBtn'>Edit</Link>
+        <button type='button' value={String(ticket.id)} onClick={handleDelete} className='deleteBtn'>Delete</button>
+      </div>
     </div>
   );
 };

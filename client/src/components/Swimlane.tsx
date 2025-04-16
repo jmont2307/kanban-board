@@ -9,29 +9,20 @@ interface SwimlaneProps {
 }
 
 const Swimlane = ({ title, tickets, deleteTicket }: SwimlaneProps) => {
-  const getStatusClass = (status: string) => {
-    switch (status) {
-      case 'Todo':
-        return 'swim-lane todo';
-      case 'In Progress':
-        return 'swim-lane inprogress';
-      case 'Done':
-        return 'swim-lane done';
-      default:
-        return 'swim-lane';
-    }
-  };
-
   return (
-    <div className={`swimlane ${getStatusClass(title)}`}>
+    <div className={`swim-lane ${title.replace(' ', '-')}`}>
       <h2>{title}</h2>
-      {tickets.map(ticket => (
-        <TicketCard 
-          key={ticket.id}
-          ticket={ticket}
-          deleteTicket={deleteTicket}
-        />
-      ))}
+      {tickets.length === 0 ? (
+        <p className="empty-lane">No tickets in this column</p>
+      ) : (
+        tickets.map(ticket => (
+          <TicketCard 
+            key={ticket.id}
+            ticket={ticket}
+            deleteTicket={deleteTicket}
+          />
+        ))
+      )}
     </div>
   );
 };
