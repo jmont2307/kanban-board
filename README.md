@@ -23,7 +23,7 @@ Follow these steps to set up the Kanban board application:
 
 1. **Clone the Repository**:
    ```
-   git clone <repository-url>
+   git clone <https://github.com/jmont2307/kanban-board>
    cd kanban-board
    ```
 
