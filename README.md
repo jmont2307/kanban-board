@@ -19,6 +19,72 @@ A full-stack Kanban board application with JWT-based authentication for managing
 
 ## Setup Instructions
 
+Follow these steps to set up the Kanban board application:
+
+1. **Clone the Repository**:
+   ```
+   git clone <repository-url>
+   cd kanban-board
+   ```
+
+2. **Configure Environment Variables**:
+   - Create a `.env` file in the `server` directory with the required variables:
+     ```
+     DB_USERNAME=your_db_username
+     DB_PASSWORD=your_db_password
+     DB_NAME=kanban_db
+     DB_HOST=localhost
+     DB_PORT=5432
+     JWT_SECRET=your_secret_key
+     PORT=3001
+     ```
+
+3. **Install Dependencies**:
+   - For the server:
+     ```
+     cd server
+     npm install
+     ```
+   - For the client:
+     ```
+     cd ../client
+     npm install
+     ```
+
+4. **Initialize the Database**:
+   - Create the database and user:
+     ```
+     psql -U postgres
+     CREATE DATABASE kanban_db;
+     CREATE USER your_db_username WITH PASSWORD 'your_db_password';
+     GRANT ALL PRIVILEGES ON DATABASE kanban_db TO your_db_username;
+     \q
+     ```
+   - Run the database schema:
+     ```
+     cd ../server
+     npm run db:init
+     ```
+   - (Optional) Seed the database with sample data:
+     ```
+     npm run db:seed
+     ```
+
+5. **Run the Application**:
+   - Start the server:
+     ```
+     cd ../server
+     npm run dev
+     ```
+   - Start the client in a new terminal:
+     ```
+     cd ../client
+     npm run dev
+     ```
+   - Open your browser and navigate to `http://localhost:5173`.
+
+These instructions will help you set up and run the application locally.
+
 ### Prerequisites
 
 - Node.js (v14 or higher)
@@ -100,15 +166,6 @@ A full-stack Kanban board application with JWT-based authentication for managing
 
 3. Open your browser and navigate to `http://localhost:5173`
 
-## Deployment
-
-This application is configured for deployment on Render.com using two methods:
-
-1. **Quick Deployment**: Use the automated [Blueprint Deployment Guide](./DEPLOY-RENDER.md) with the included `render.yaml` configuration.
-2. **Manual Deployment**: Follow the more detailed [Step-by-Step Deployment Guide](./DEPLOYMENT.md) for complete control over the deployment process.
-
-## API Endpoints
-
 ### Authentication
 - `POST /auth/login` - User login
 
@@ -118,6 +175,13 @@ This application is configured for deployment on Render.com using two methods:
 - `POST /api/tickets` - Create a new ticket
 - `PUT /api/tickets/:id` - Update a ticket
 - `DELETE /api/tickets/:id` - Delete a ticket
+
+## Credits
+
+This project was created with assistance from:
+- Online Learning Assistant
+- Claude
+- Google
 
 ## License
 
